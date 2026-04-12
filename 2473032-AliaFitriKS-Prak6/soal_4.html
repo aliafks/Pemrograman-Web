@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        body{
+            font-family: Arial;
+            font-size: smaller;
+            font-weight: bold;
+            color: blue;
+            text-align: right;
+        }
+        table{
+            border-collapse: collapse;
+            border: 5px;
+        }
+        td{
+            border: 1px solid black;
+            padding: 3px;
+        }
+        table table{
+            border-collapse: separate;
+            border-spacing: 5px;
+        }
+        .label-box{
+            border: 1px solid black;
+            padding: 8px;
+            width: 60px;
+            text-align: right;
+        }
+        .container{
+            width: 320px;
+            border: 1px solid #aaa;
+            padding: 10px;
+            background: #eee;
+        }
+        .row{
+            margin-bottom: 8px;
+        }
+        input{
+            width: 200px;
+            padding: 3px;
+        }
+        .select-wrapper{
+            text-align: center;
+        }        
+        select{
+            width: 150px;
+            padding: 3px;
+        }
+        .btn{
+            margin-top: 8px;
+            text-align: center;
+        }
+        button{
+            padding: 5px 15px;
+            margin: 2px;
+            font-size: smaller;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+    <script>
+        function proses(){
+            let input = document.getElementById("input").value;
+            let mode = document.getElementById("mode").value;
+            let output = "";
+            if(mode == "d2b"){
+                if(isNaN(input) || input < 0 || input > 255){
+                    alert("Max Input 255!")
+                    return;
+                }
+                let angka = parseInt(input);
+                if(angka == 0){
+                    output = "0";
+                } else {
+                    while(angka > 0){
+                        output = (angka % 2) + output;
+                        angka = Math.floor(angka / 2);
+                    }
+                }
+            }
+            else{
+                if(input.length != 8){
+                    alert("Input 8 Digit!")
+                    return;
+                }
+                let valid = true;
+                for(let i = 0; i < input.length; i++){
+                    if(input[i] != "0" && input[i] != "1"){
+                        valid = false;
+                    }
+                }
+
+                if(!valid){
+                    return;
+                }
+
+                let hasil = 0;
+                let pangkat = 0;
+
+                for(let i = input.length - 1; i >= 0; i--){
+                    if(input[i] == "1"){
+                        hasil += Math.pow(2, pangkat);
+                    }
+                    pangkat++;
+                }
+                output = hasil;
+            }
+
+            document.getElementById("output").value = output;
+        }
+
+        function resetForm(){
+            document.getElementById("input").value = "";
+            document.getElementById("output").value = "";
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class="label-box">Input :</td>
+                        <td><input type="text" id="input"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-box">Output :</td>
+                        <td><input type="text" id="output" readonly></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="select-wrapper">
+                <select id="mode">
+                    <option value="d2b">decimal-biner</option>
+                    <option value="b2d">biner-decimal</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr class="btn">
+            <td>
+                <button onclick="proses()">PROSES</button>
+                <button onclick="resetForm()">RESET</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
