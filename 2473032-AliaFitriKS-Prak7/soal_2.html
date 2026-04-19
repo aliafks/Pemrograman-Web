@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            margin: 10px;
+            box-shadow: 3px 5px 8px gray;
+        }
+        td{
+            border: 1px solid white;
+            padding: 5px;
+        }
+        .judul td{
+            background: rgb(168, 168, 131);
+        }
+        .c1{
+            background: lightblue;
+        }
+        .c2{
+            background: lightsalmon;
+        }
+        .c3{
+            background: #CCFFAA;
+        }
+    </style>
+    <script>
+        function warnahijau(baris){
+            document.getElementById(baris).className = "c3";
+        }
+        function warnaasli(baris, warna){
+            document.getElementById(baris).className = warna;
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr class="judul">
+            <td>Position</td>
+            <td>Programming Language</td>
+            <td>Ratings</td>
+        </tr>
+        <tr id="r1" class="c1"
+            onmouseover="warnahijau('r1')"
+            onmouseout="warnaasli('r1','c1')">
+            <td>1</td>
+            <td>C</td>
+            <td>18.058%</td>
+        </tr>
+        <tr id="r2" class="c2"
+            onmouseover="warnahijau('r2')"
+            onmouseout="warnaasli('r2','c2')">
+            <td>2</td>
+            <td>Java</td>
+            <td>18.051%</td>
+        </tr>
+        <tr id="r3" class="c1"
+            onmouseover="warnahijau('r3')"
+            onmouseout="warnaasli('r3','c1')">
+            <td>3</td>
+            <td>C++</td>
+            <td>9.707%</td>
+        </tr>
+        <tr id="r4" class="c2"
+            onmouseover="warnahijau('r4')"
+            onmouseout="warnaasli('r4','c2')">
+            <td>4</td>
+            <td>PHP</td>
+            <td>9.662%</td>
+        </tr>
+        <tr id="r5" class="c1"
+            onmouseover="warnahijau('r5')"
+            onmouseout="warnaasli('r5','c1')">
+            <td>5</td>
+            <td>(Visual) Basic</td>
+            <td>6.392%</td>
+        </tr>
+    </table>
+</body>
+</html>

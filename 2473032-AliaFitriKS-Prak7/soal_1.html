@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        .container{
+            width: 270px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        .titik{
+            width: 10px;
+            text-align: right;
+        }
+        td{
+            padding: 5px;
+        }
+        .counter{
+            text-align: right;
+        }
+        #txt2{
+            width: 35px;
+        }
+
+    </style>
+    <script>
+        function call_onKeyPress(ob){
+            obval=ob.value;
+
+            if(obval.length > 256){
+                obval = obval.substr(0,256);
+                ob.value = obval;
+            }
+
+            document.getElementById("txt2").value = obval.length+"/256";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td>Judul</td>
+                <td class="titik">:</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>Deskripsi</td>
+                <td class="titik">:</td>
+                <td>
+                    <textarea
+                        onkeyup="call_onKeyPress(this)"
+                        onkeydown="call_onKeyPress(this)">
+                    </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="counter">
+                    <input type="text" id="txt2" value="0/256" readonly>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

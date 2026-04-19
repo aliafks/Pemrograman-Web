@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: larger;
+        }
+        table{
+            border: 1px solid black;
+            margin: 10px;
+        }
+        td{
+            padding: 6px;
+        }
+        input{
+            width: 160px;
+        }
+        select{
+            width: 145px;
+        }
+        #txtHasil{
+            background: white;
+        }
+    </style>
+    <script>
+        let isiData = [];
+
+function simpanAngka(){
+    let nilai = document.getElementById("txtData").value;
+
+    if(nilai == "" || isNaN(nilai)){
+        return;
+    }
+
+    isiData.push(parseInt(nilai));
+
+    document.getElementById("txtData").value = "";
+    document.getElementById("txtData").focus();
+}
+
+function pilihMenu(){
+    let menu = document.getElementById("cmbMenu").value;
+    let tampil = "";
+    if(menu == "lihat"){
+        tampil = isiData.join(", ");
+    }
+    else if(menu == "jumlah"){
+        tampil = isiData.length;
+    }
+    else if(menu == "total"){
+        let hasil = 0;
+        for(let i=0; i<isiData.length; i++){
+            hasil += isiData[i];
+        }
+        tampil = hasil;
+    }
+    else if(menu == "rata"){
+        let hasil = 0;
+        for(let i=0; i<isiData.length; i++){
+            hasil += isiData[i];
+        }
+        tampil = hasil / isiData.length;
+    }
+    else if(menu == "besar"){
+        tampil = Math.max(...isiData);
+    }
+    else if(menu == "kecil"){
+        tampil = Math.min(...isiData);
+    }
+    else if(menu == "ganjil"){
+        let arr = [];
+        for(let i=0; i<isiData.length; i++){
+            if(isiData[i] % 2 != 0){
+                arr.push(isiData[i]);
+            }
+        }
+        tampil = arr.join(", ");
+    }
+    else if(menu == "genap"){
+        let arr = [];
+        for(let i=0; i<isiData.length; i++){
+            if(isiData[i] % 2 == 0){
+                arr.push(isiData[i]);
+            }
+        }
+        tampil = arr.join(", ");
+    }
+    else if(menu == "hapus"){
+        isiData = [];
+        tampil = "";
+    }
+    document.getElementById("txtHasil").value = tampil;
+    }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Data</td>
+            <td><input type="text" id="txtData"></td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="simpanAngka()">Add</button>
+            </td>
+            <td>
+                <select id="cmbMenu" onchange="pilihMenu()">
+                    <option value="">Pilih Operasi</option>
+                    <option value="lihat">Display</option>
+                    <option value="jumlah">Count</option>
+                    <option value="total">Sum</option>
+                    <option value="rata">Average</option>
+                    <option value="besar">Max</option>
+                    <option value="kecil">Min</option>
+                    <option value="ganjil">Ganjil</option>
+                    <option value="genap">Genap</option>
+                    <option value="hapus">Hapus</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Hasil</td>
+            <td><input type="text" id="txtHasil" readonly></td>
+        </tr>
+    </table>
+</body>
+</html>
