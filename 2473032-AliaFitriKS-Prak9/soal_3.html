@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        .box{
+            width: 450px;
+            padding: 5px;
+            border: 1px solid lightgray;
+            box-shadow: 2px lightgray;
+        }
+        .warna{
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            float: left;
+            border: 2px blue solid;
+            background: white;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".warna").click(function(){
+                $(".warna").removeAttr("id");
+                $(this).css("background","red");
+                $(this).attr("id","merah");
+            });
+            $("button").click(function(){
+                $(".warna").each(function(index, box){
+                    if($(box).attr("id") == "merah"){
+                        return false;
+                    }
+                    $(box).css("background","yellow");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <button>Change colors</button>
+        <br>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="warna"></div>
+        <div class="clear"></div>
+    </div>
+</body>
+</html>

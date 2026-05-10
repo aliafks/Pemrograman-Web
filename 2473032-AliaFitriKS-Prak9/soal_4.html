@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+         table{
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        td{
+            width: 50px;
+            height: 100px;
+            text-align: center;
+        }
+        .atas{
+            height: 30px;
+            border-bottom: 1px solid black;
+        }
+        input{
+            margin: 5px;
+        }
+    </style>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".header").click(function(){
+                let cek = $(this).attr("checked");
+                if(cek){
+                    $("input:checkbox.body").removeAttr("checked");
+                    $(this).removeAttr("checked");
+                }
+                else{
+                    $("input:checkbox.body").attr("checked","checked");
+                    $(this).attr("checked","checked");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <table border="2" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <div class="atas">
+                    <input class="header" type="checkbox">
+                </div>
+                <br>
+                <input class="body" type="checkbox"><br>
+                <input class="body" type="checkbox"><br>
+                <input class="body" type="checkbox"><br>
+                <input class="body" type="checkbox"><br>
+                <input class="body" type="checkbox"><br>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

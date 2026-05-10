@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .box{
+            width: 300px;
+            margin: 30px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 3px #999;
+        }
+        #search{
+            width: 190px;
+            height: 25px;
+            margin-bottom: 15px;
+        }
+        ul{
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        li{
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        .highlight{
+            color: red;
+        }
+    </style>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+         $(document).ready(function(){
+            $("#search").keyup(function(){
+                let text = $(this).val().toLowerCase();
+                $("li").removeClass("highlight");
+                $("li").each(function(){
+                    let perusahaan = $(this).text().toLowerCase();
+                    if(perusahaan.includes(text) && text != ""){
+                        $(this).addClass("highlight");
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <input type="text" id="search">
+        <ul>
+            <li>Sun Microsystem</li>
+            <li>Apache Software Foundation</li>
+            <li>Oracle Coorporation</li>
+            <li>International Bussiness Machines</li>
+            <li>Microsoft Coorporation</li>
+            <li>Apple Inc</li>
+            <li>Sap Ag</li>
+            <li>Accenture</li>
+            <li>Computer Sciences Coorporation</li>
+            <li>Google</li>
+            <li>Softbank</li>
+            <li>Yahoo</li>
+        </ul>
+    </div>
+</body>
+</html>

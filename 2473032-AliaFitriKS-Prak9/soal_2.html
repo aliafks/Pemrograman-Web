@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+         body{
+            font-family: "Times New Roman";
+        }
+        input{
+            width: 165px;
+        }
+        button{
+            margin-left: 3px;
+        }
+        #list div{
+            margin-top: 4px;
+        }
+    </style>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnAdd").click(function(){
+                let namaBaru = $("#txtNama").val();
+                if(namaBaru != ""){
+                    $("<div>" + namaBaru + "</div>").appendTo("#list");
+                    $("#txtNama").val("");
+                }
+            });
+            $("#btnCari").click(function(){
+                let cari = $("#txtNama").val();
+                $("#list div").css("text-decoration","none");
+                $("#list div:contains('" + cari + "')")
+                .css("text-decoration","underline");
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" id="txtNama">
+    <button id="btnAdd">Add</button>
+    <button id="btnCari">Search</button>
+    <div id="list">
+        <div>John Resig</div>
+        <div>George Martin</div>
+        <div>Malcom John Sinclair</div>
+        <div>J. Ohn</div>
+    </div>
+</body>
+</html>

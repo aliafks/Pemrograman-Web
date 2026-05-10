@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        .menu{
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        .menu li{
+            text-decoration: underline;
+            background: hotpink;
+            color: white;
+            width: 183px;
+            padding: 8px;
+            margin-right: 5px;
+            position: relative;
+            cursor: pointer;
+        }
+        .menu li ol{
+            list-style: none;
+            position: absolute;
+            top: 100%;
+            width: 150px;
+            left: 0;
+            background: white;
+            border: 5px solid hotpink;
+            display: block;
+            overflow: hidden;
+        }
+        .menu li ol li{
+            background: white;
+            padding: 3px;
+            text-align: left;
+            color: black;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".menu li ol").hide();
+            $(".menu > li").hover(
+                function(){ 
+                $(".menu li ol").hide(); 
+                $(this).children("ol").show(); 
+                },
+                function(){
+                $(this).children("ol").hide();
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+    <ol class="menu">
+        <li>jQuery
+            <ol>
+                <li>Download</li>
+                <li>Documentation</li>
+                <li>Blog</li>
+            </ol>
+        </li>
+
+        <li>Community
+            <ol>
+                <li>Mailing List</li>
+                <li>Tutorials</li>
+                <li>Demos</li>
+                <li>Plugins</li>
+            </ol>
+        </li>
+
+        <li>Development
+            <ol>
+                <li>Source Code</li>
+                <li>Bug Tracking</li>
+                <li>Recent Changes</li>
+            </ol>
+        </li>
+    </ol>
+</body>
+</html>
