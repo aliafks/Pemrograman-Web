@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        .kotakInput{
+            width: 350px;
+            border: 2px solid black;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-shadow: 2px 2px 2px 2px lightgray;
+        }
+        .kotakInput input{
+            width: 100%;
+            margin-bottom: 5px;
+            border: 2px solid black;
+            border-style: double;
+        }
+        .judul{
+            border: 3px solid black;
+            border-style: double;
+            height: 45px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: blue;
+            text-decoration: underline;
+            padding-top: 20px;
+        }
+        .link{
+            color: blue;
+            text-decoration: underline;
+        }
+        .hasil{
+            width: 600px;
+            border: 3px solid black;
+            border-style: double;
+        }
+        .footer{
+            border: 3px solid black;
+            border-style: double;
+            margin-top: 0;
+            padding: 0;
+        }
+        #isi{
+            margin-bottom: 0;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("#btnLook").click(function(){
+            $.getJSON("SIJson.json", function(data){
+                $("#isi").html("");
+                $(".judul").html(data.title);
+                $.each(data.items, function(i, item){
+                    $("#isi").append(
+                        "<div class='item'>" +
+                        "<a href='" + item.link + "' class='link'>" +
+                        item.title +
+                        "</a><br>" +
+                        "By : " + item.author + " / " + item.published +
+                        "<br><br>" +
+                        item.description +
+                        "<br><br>" +
+                        "Universitas : " +
+                        "<a href='" + item.universitas.m + "' class='link'>Click Here</a>" +
+                        "<br>" +
+                        "Tag(s) : " + item.tags +
+                        "</div>"
+                    );
+                });
+                $(".footer").html(data.generator);
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="kotakInput">
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Content">
+        <input type="text" placeholder="Generator">
+        <br><br>
+        <button id="btnLook">Look</button>
+    </div>
+    <div class="hasil">
+        <div class="judul"></div>
+        <div id="isi"></div>
+        <br>
+        <div class="footer"></div>
+    </div>
+    <br>
+    <button id="btnLook">Look</button>
+
+</body>
+</html>

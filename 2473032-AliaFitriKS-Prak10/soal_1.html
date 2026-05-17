@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2473032-Alia Fitri Khairunisa Siswati</title>
+    <style>
+        .box{
+            width: 420px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+        table{
+            border-collapse: collapse;
+            margin-top: 10px;
+            width: 70%;
+        }
+        th{
+            background: black;
+            color: white;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        td{
+            border: 1px solid black;
+            padding: 5px;
+        }
+        .radio{
+            width: 250px;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+        .radio td{
+            border: none;
+            padding: 3px;
+        }
+        .radio{
+            border: 1px solid black;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnSearch").click(function(){
+                let pilihan = $(":radio[name='kelas']:checked").val();
+                let fileJson = "";
+                if(pilihan == "all"){
+                    fileJson1 = "nilai.json";
+                }
+                else if(pilihan == "A"){
+                    fileJson1 = "nilaiA.json";
+                }
+                else if(pilihan == "B"){
+                    fileJson1 = "nilaiB.json";
+                }
+                $.getJSON(fileJson1, function(data){
+                    let baris = "";
+                    $.each(data.nilai, function(i, item){
+                        baris += "<tr>";
+                        baris += "<td>" + item.nrp + "</td>";
+                        baris += "<td>" + item.nama + "</td>";
+                        baris += "<td>" + item.kelas + "</td>";
+                        baris += "<td>" + item.nilaiakhir + "</td>";
+                        baris += "</tr>";
+                    });
+                    $("#isiData").html(baris);
+                    $("#isiData tr:odd").css("background","#CCFFAA");
+                    $("#isiData tr:even").css("background","#FFFFCC");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+        <b>
+            Selamat! Berikut adalah Daftar Mahasiswa yang mendapat
+            Nilai A Pemrograman Web SI Tahun Ajaran 2023/2024
+        </b>
+        <br><br>
+    <table class="radio">
+        <tr>
+            <td>
+                <input type="radio" name="kelas" value="all" checked>
+                All
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="kelas" value="A">
+                Kelas A
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="kelas" value="B">
+                Kelas B
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button id="btnSearch">Search</button>
+            </td>
+        </tr>
+    </table>      
+    <table>
+            <tr>
+                <th>NRP</th>
+                <th>NAMA</th>
+                <th>KELAS</th>
+                <th>NILAI AKHIR</th>
+            </tr>
+            <tbody id="isiData">
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
